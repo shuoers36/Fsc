@@ -1,0 +1,47 @@
+package com.hfsc.dao;
+
+import java.util.List;
+
+import com.hfsc.model.User;
+import com.hfsc.model.Page;
+import com.hfsc.model.Session;
+
+public interface UserDao {
+    
+   
+    public void insertUser(User user);
+    
+  
+    public void updateUser(User user);
+    
+   
+    public void deleteUser(Long id);
+   
+    public List<User> queryUser(User user,Page page);
+
+
+
+	List<User> queryRole(User user);
+
+
+	List<User> queryResource(String role_name);
+
+
+	List<Session> queryClass_id(String teacher_name);
+
+
+	List<Session> querySubject_name(String teacher_name);
+
+
+	List<Session> queryClass_idByStu(String student_name);
+
+
+	List<Session> queryStu_idByParent(String parent_name);
+
+
+	List<Session> queryClass_idByStu_id(int stu_id);
+    
+  
+    
+    
+}

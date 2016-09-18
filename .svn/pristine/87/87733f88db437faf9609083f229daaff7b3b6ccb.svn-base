@@ -1,0 +1,15 @@
+权限(增，删，改，查)
+
+注册：  家长      后台验证stu-id是否通过
+登录：  查询user表
+学校简介：  All
+用户管理： Admin（1,1,1,1）
+学生活动： Teacher(1,1,1,1)      Student(0,0,0,1)      Parent(0,0,0,1)
+学生考勤： Parent(0,0,0,1)       Student(0,0,0,1)
+学生成绩   Teacher(1,1,1, 1.1)   Student(0,0,0,1.2)    Parent(0,0,0,1.2)
+作业管理   Teacher(1,1,1, 1.1)   Student(0,0,0,1.2)    Parent(0,0,0,1.2)
+留言交流   All
+公告消息   Admin（1,1,0,1） Leader(1,1,0,1)  Student(0,0,0,1)    Parent(0,0,0,1)
+奖惩记录   Student(0,0,0,1)    Parent(0,0,0,1)
+评语记录   Teacher(1,1,0, 1.1)  Parent(0,0,0,1.2) Student(0,0,0,1.2) 
+班级管理   Admin（1,1,0,1）

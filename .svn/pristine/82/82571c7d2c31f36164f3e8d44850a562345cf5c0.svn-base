@@ -1,0 +1,11 @@
+package com.hfsc.dao;
+
+import java.util.List;
+
+import com.hfsc.model.Score;
+
+public interface ScoreDao {
+
+	List<Score> queryScore(int StudentID);
+
+}

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>teacher</title>
+  <meta charset="UTF-8">
+  <style>
+    h1,h2,a,ul,li,a,p{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 900px;
+      min-width: 900px;
+      margin: 0 auto;
+      background: url(images/bg2.jpg) center center;
+      font-size: .625em;
+    }
+    #nav h1 {
+      font-size: 2em;
+      color: #888;
+      display: inline-block;
+      padding-left: 3em;
+    }
+    #nav h2 {
+      float: right;
+      padding-right: 1em;
+      font-size: 1.8em;
+      color: #aaa;
+    }
+    #nav a {
+      float: right;
+      padding-right: 2em;
+      font-size: 1.6em;
+      text-decoration: none;
+      color: #000;
+    }
+    #nav sup {
+      color: red;
+    }
+    #container {
+      margin-top: 50px;
+      position: relative;
+    }
+    #function-list {
+      list-style: none;
+      font-size: 1.5em;
+      float: left;
+      width: 180px;
+      height: 532px;
+      text-align: center;
+      background: rgba(240,240,240,.4);
+      margin-top: -21px;
+      padding-top: 20px;
+      border-radius: 10px 0 0 10px;
+
+    }
+    #function-list li {
+      padding: .3em;
+      width: 9em;
+      margin-left: 24px;
+      letter-spacing: .1em;
+      border-width: 0px 1px 0px 1px;
+      border-style: solid;
+      border-color: #ccc;
+      line-height: 30px;
+      border-bottom: 1px inset #444;
+    }
+    #function-list li:first-child {
+      border-top: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    #function-list > li:last-child {
+      border-bottom: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    #function-list span {
+      display: inline-block;
+      transform: rotate(270deg);
+    }
+    #function-list li a {
+      text-decoration: none;
+      color: #333;
+    }
+    .partition {
+        position: absolute;
+        top: 0%;
+        left: 18%;
+        width: 700px;
+        height: 500px;
+        display: none;
+    }
+    #list-content {
+      float: left;
+      margin-top: -20px;
+      margin-left:-8px;
+      border-radius: 10px;
+      height: 550px;
+      width: 700px;
+      background: rgba(240,240,240,.6);
+    }
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 49%;
+      color: #aaa;
+    }
+    #school-brief:target,#school-notice:target,#school-organization:target,#school-idadmin:target,#school-homework:target,#school-activity:target,#school-grade:target,#school-repu:target,#school-comments:target,#school-attence:target,#school-message:target,#message-send:target,#message-trash:target,#add-homework:target,#add-draft:target,#homework-send:target,#add-activity:target,#add-grade:target,#add-repu:target,#add-comments:target,#check-register:target,#message-create:target,#message-draft:target,#private-message:target,#message-trash:target,#private-create:target{
+      display: block;
+    }
+    #school-brief h2 {
+      margin-left: 40px;
+    }
+    #school-brief img {
+      padding: 10px;
+      margin-top: 20px;
+    }
+    #school-brief p {
+      padding: 10px 60px;
+      font-size: 1.4em;
+      line-height: 1.7em;
+    }
+    #school-notice li {
+      position: relative;
+      list-style: none;
+      line-height: 5em;
+      padding-left: 3em;
+      border: 1px solid #aaa;
+      box-shadow: 2px 2px 3px #333;
+      margin: 5px 60px;
+      font-size: 1.2em;
+    }
+    #school-notice sup {
+      float: right;
+      margin-right: 10px;
+    } 
+    #check-register {
+      text-align: center;
+      font-size: 1.5em;
+      line-height: 2em;
+    }
+    #check-register li {
+      list-style: none;
+      border: 1px solid #aaa;
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+    #school-homework h3 {
+      text-align: center;
+      font-size: 2em;
+    }
+    #school-homework dl:before {
+      content: "·";
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-right: .5em;
+      margin-left: 1em;
+    }
+    #school-homework li {
+      list-style: none;
+      line-height: 3em;
+      padding-left: 30px;
+      font-size: 1.5em;
+    }
+    #school-activity li {
+      list-style: none;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+      width: 200px;
+      text-align: center;
+    }
+    #school-grade h3 {
+      text-align: center;
+      font-size: 1.5em;
+    }
+    #school-grade table {
+      text-align: center;
+      margin: 50px auto;
+    }
+    #school-repu h2 {
+      display: inline-block;
+      padding-left: 200px;
+      color: #555;
+    }
+    #school-repu ul {
+      list-style: none; 
+      font-size: 1.5em;
+    }
+    #school-repu ul span {
+      color: #888;
+      padding-right: 3em;
+      font-size: .8em;
+    }
+    #school-repu #re {
+      padding: 60px;
+      float: left;
+    }
+    #school-repu #pu {
+      float: left;
+      padding: 30px;
+    }
+    #school-comments ul {
+      list-style: none;
+      font-size: 1.5em;
+      padding-left: 2em;
+    }
+    #school-comments li:before {
+      content: "·";
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 2.5em;    
+    }
+    #school-comments span {
+      display: block;
+      float: right;
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+    #school-attence {
+      text-align:  center;
+      padding-top: 50px;
+    }
+
+    #message ul {
+      display: none;
+    }
+    #message:hover ul {
+      display: block;
+      margin-left: -28px;
+    }
+    #message li {
+      list-style: none;
+      border: 0;
+    }
+    #school-message,#message-send,#message-trash {
+      padding: 30px 40px;
+    }
+    .submenu ul{
+      display: none;
+      list-style: none;
+    }
+    .submenu:hover ul {
+      display: block;
+      margin-left: -29px;
+    }
+    .submenu:hover ul li {
+      box-shadow:  1px 1px 0px #aaa;
+      background: rgba(240,240,240,.3);
+    }
+    #add-homework {
+      position: absolute;
+      left: 40%;
+      line-height: 5em;
+      font-size: 2em;
+    }
+    #add-draft {
+      text-align: center;
+      font-size: 1.5em;
+    }
+    #add-draft li{
+        list-style: none;
+        box-shadow: 1px 1px 2px #777;
+        margin-left: 10px;
+    }
+    #add-draft li span {
+      margin-left: 20px;
+    }
+    #homework-send {
+      font-size: 1.6em;
+      text-align: center;
+    }
+    #homework-send li {
+      list-style: none;
+      box-shadow: 1px 1px 3px #666;
+      margin-left: 10px;
+    }
+    #add-activity {
+      text-align: center;
+      line-height: 300px;
+    }
+    #school-grade {
+      text-align: center;
+    }
+    #add-grade {
+      text-align: center;
+      font-size: 1.6em;
+      line-height: 3em;
+      margin-top: 100px;
+    }
+    #add-repu {
+      font-size: 1.6em;
+      text-align: center;
+    }
+    #add-comments {
+      font-size: 1.6em;
+      line-height: 3em;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #school-message {
+      font-size: 1.5em;
+      margin-left: 60px;
+      line-height: 40px;
+    }
+    #school-message ul {
+      margin-top: 30px;
+    }
+    #message-create h2{
+      text-align: center;
+    }
+    .new-message {
+      font-size: 1.5em;
+      line-height: 2.9em;
+      margin: 40px 0 0 40px;
+    }
+    .message-box {
+        font-size: 1.5em;
+        margin: 30px 0 0 50px;
+        line-height: 2em;
+    }
+    .message-box h2 {
+      text-align: center;
+    }
+    .message-box li {
+      position: relative;
+    }
+    .message-box li:after {
+        position: absolute;
+        content: "删除";
+        top: 100%;
+        left: 80%;
+    }
+    #message-draft li:before {
+        position: absolute;
+        content: "发布";
+        top: 100%;
+        left: 70%;
+    }
+     #message-trash li:before {
+        position: absolute;
+        content: "撤销";
+        top: 100%;
+        left: 70%;
+    }
+    #private-message {
+      font-size: 1.5em;
+      line-height: 2.5em;
+      margin-left: 60px;
+    }
+     #private-message li {
+      position: relative;
+
+     }
+     #private-message li:after {
+      position: absolute;
+      content: "回复 移至垃圾箱";
+      top: 100%;
+     }
+     #private-create h2{
+      text-align: center;
+     }
+     #private-create input[type="submit"] {
+      padding: .5em;
+      width: 6em;
+      border-radius: 5px;
+      margin-left: 30px;
+     }
+     
+  </style>
+</head>
+<body>
+    <div id="nav">
+      <h1>Hwadee-FSC</h1>
+      <a href="#">注销</a>
+      <h2>李老师<sup>3</sup></h2>
+    </div>
+    <div id="container">
+      <ul id="function-list">
+        <li><a href="#school-brief">学校简介</a></li>
+        <li><a href="#school-notice">公告信息</a></li>
+        <li><a href="#check-register">注册审核</a></li>
+        <li id="homework" class="submenu"><a href="#school-homework">课后作业</a><span><</span>
+          <ul>
+            <li><a href="#add-homework">新建作业</a></li>
+            <li><a href="#add-draft">查看草稿</a></li>
+            <li><a href="#homework-send">已发布</a></li>
+          </ul>
+        </li>
+        <li class="submenu"><a href="#school-activity" >学生活动<span><</span></a>
+          <ul>
+            <li><a href="#add-activity">新建</a></li>
+            <li>草稿</li>
+            <li>历史</li>
+          </ul>
+        </li>
+        <li class="submenu"><a href="#school-grade">成绩管理</a><span><</span>
+          <ul>
+            <li><a href="#add-grade">录入成绩</a></li>
+          </ul>
+        </li>
+        <li class="submenu"><a href="#school-repu">奖惩管理</a><span><</span>
+        <ul>
+          <li><a href="#add-repu">添加</a></li>
+        </ul>
+        </li>
+        <li class="submenu"><a href="#school-comments">评语管理<span><</span></a>
+        <ul>
+          <li><a href="#add-comments">添加</a></li>
+        </ul>
+        </li>
+        <li id="message" class="submenu"><a href="#school-message">群发消息</a><span><</span>
+        <ul>
+          <li><a href="#message-create">新建</a></li>
+          <li><a href="#message-draft">草稿</a></li>
+        </ul>
+        </li>
+        <li class="submenu"><a href="#private-message">私信管理</a><span><</span>
+        <ul>
+          <li><a href="#private-create">新建</a></li>
+          <li><a href="#message-trash">垃圾箱</a></li>
+        </ul>
+        </li>
+      </ul>
+      <div id="list-content">
+        
+      </div>
+      <div id="school-brief" class="partition">
+        <h2>西安电子科技大学</h2>
+        <p>
+          西安电子科技大学是以信息与电子学科为主，工、理、管、文多学科协调发展的全国重点大学，直属教育部，是国家“985优势学科创新平台”项目和“211工程”项目重点建设高校之一，是全国56所设有研究生院的高校之一，37所示范性软件学院的高校之一，也是全国20所获批设立集成电路人才培养基地的高校之一。</p>
+          <p>学校前身是1931年诞生于江西瑞金的中央军委无线电学校，是毛泽东等老一辈革命家亲手创建的第一所工程技术学校。1958年学校迁址西安，1966年转为地方建制，1988年定为现名。
+        </p>
+        <hr>
+        <img src="images/school1.jpg" width="200px">
+        <img src="images/school2.jpg" width="200px">
+        <img src="images/school3.jpg" width="200px">
+      </div>
+      <div id="school-notice" class="partition">
+        <ul>
+          <li><h2>消息公告1</h2>
+            <p>今天不上课，请大家好好休息，保证身体健康。<sup>2016.08.13</sup></p>
+          </li>
+          <li><h2>消息公告2</h2></li>
+          <li><h2>消息公告3</h2></li>
+        </ul>
+      </div>
+      <div id="check-register" class="partition">
+        <h2>待审核列表</h2>
+        <ul>
+          <li><dl>小张 家长 2016.08.15 08:34<dl>
+          <dd>留言：我是小张的家长，望通过</dd>通过 拒绝</li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="school-homework" class="partition">
+        <h3>班级作业 &nbsp;&nbsp;2016年8月2日</h3>
+        <ul>
+          <li><dl>002 操作系统  2016.08.14 08:20</dl><dd>
+            今天的操作系统作业是课本100页 1-20
+          </dd></li>
+          <li><dl>004 编译原理 2016.08.14 08:20</dl><dd>
+            今天的编译原理作业是课本100页 1-20
+          </dd></li>
+         <li><dl>005 算法 2016.08.14 08:20</dl><dd>
+            今天的算法作业是课本100页 1-20
+          </dd></li>
+        </ul>
+      </div>
+      <div id="add-homework" class="partition">
+        <h2>新建作业</h2>
+        学科:<input type="text"><br>
+        <textarea cols="30" rows="4"></textarea><br>
+        <input type="submit" value="提交">
+        <input type="submit" value="存为草稿">
+      </div>
+      <div id="add-draft" class="partition">
+        <h2>草稿</h2>
+        <ul>
+          <li><h3>操作系统 2016.08.13 19:07</h3>
+          <p>今天的作业是 课本第一章习题 10-21</p>
+          <span>编辑</span><span>删除</span><span>发布</span>
+          </li>
+        </ul>
+        
+      </div>
+      <div id="homework-send" class="partition">
+        <h2>往日作业</h2>
+        <ul>
+          <li><h3>002 操作系统 2016.08.13 19:07</h3>
+          <p>今天的作业是 课本第一章习题 10-21</p>
+          <span>删除</span>
+          </li>
+        </ul>
+      </div>
+      <div id="school-activity" class="partition">
+        <ul>
+          <li><img src=" " width="200px" height="100px">互联网+大赛</li>
+          <li><img src=" " width="200px" height="100px">软件开发大赛</li>
+          <li><img src=" " width="200px" height="100px">移动应用开发大赛</li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+        </ul>
+      </div>
+      <div id="add-activity" class="partition">
+            <h2>类似作业页面。</h2>
+        </div>
+      <div id="school-grade" class="partition">
+        <h3>本学期成绩</h3>
+        搜索:<input type="text"> 选择学期: <select>
+          <option>2016年第一学期</option>
+          <option>2016年第二学期</option>
+        </select>
+        <table border="1px" width="600px" height="300px" cellspacing="0">
+          <tr>
+            <td>张三</td><td>90</td><td>李四</td><td>87</td>
+          </tr>
+          <tr>
+            <td>小明</td><td>85</td><td>小李</td><td>83</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+        </table>
+      </div>
+      <div id="add-grade" class="partition">
+        成绩时间<select>
+          <option>2016年第一学期</option>
+          <option>2016年第二学期</option>
+          </select><br>
+          学科：<select>
+          <option>操作系统</option>
+          <option>编译原理</option>
+          </select><br>
+          学生姓名：<input type="text"><br>
+          学科成绩：<input type="text"><br>
+          <input type="submit" value="确认">
+        </select>
+      </div>
+      <div id="school-repu" class="partition">
+        <h2>奖励情况</h2><h2>受罚情况</h2>
+        <ul id="re">
+          <li><span>006</span>小张&nbsp; 2016年1月 校级优秀学生</li>
+          <li><span>002</span>小王 &nbsp;2016年1月 国家级特等奖</li>
+          <li><span>010</span>小李 &nbsp;2016年1月 校级ACM竞赛二等奖</li>
+        </ul>
+        <ul id="pu">
+            <li>019 小叶 2016年3月 校级处分</li>
+        </ul>
+      </div>
+      <div id="add-repu" class="partition">
+        布局类似于录入成绩页 ，表项为学生 时间 奖惩内容
+      </div>
+      <div id="school-comments" class="partition">
+        <ul>
+          <li>
+            该同志人生目的明确，信念坚定执着，工作敬业积极，学习认真踏实，生活简约充实，为人豁达宽厚，情绪乐观平稳，虽然自身还有很多缺点和不足，但仍不愧是一个好同志。 &nbsp; &nbsp; &nbsp; 编辑  &nbsp;删除<span>-----to 小张 2016.08.21 </span>
+          </li>
+          <li>
+            外表文静，内心热情，总是拥有一份好心情，总有笑容。你知道自己的优缺点，有稳定的目标，有自己努力的方向，认真的做好每一件事情，专业能力和综合素质都有显著进步。<span>-----to 小王 2016.08.21</span>
+          </li>
+          <li>
+            该同志人生目的明确，信念坚定执着，工作敬业积极，学习认真踏实，生活简约充实，为人豁达宽厚，情绪乐观平稳，虽然自身还有很多缺点和不足，但仍不愧是一个好同志。<span>----- to 小李 2016.08.21</span>
+          </li>
+        </ul>
+      </div>
+      <div  id="add-comments" class="partition">
+        学生姓名：<input type="text"><br>
+        评语内容：<textarea cols="20" rows="3">
+        </textarea><br>
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+      </div>
+      <div id="school-message" class="partition">
+        <h2>消息列表</h2>
+        <ul>
+          <li>一年级 4班  2016.8.24 13:48<br>
+          今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。-------张老师
+          </li>
+          <li>一年级 4班  2016.8.24 13:48<br>
+          今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。-------张老师
+          </li>
+          <li>一年级 4班  2016.8.24 13:48<br>
+          今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。-------张老师
+          </li>
+        </ul>
+      </div>
+      <div id="message-create" class="partition"><h2>发布公告消息</h2>
+      <div class="new-message">
+        年级：<select>
+          <option>一年级</option>
+          <option>二年级</option>
+        </select>
+        班级：<select>
+          <option>1班</option>
+          <option>2班</option>
+        </select><br>
+        内容：<textarea cols="40" rows="5"></textarea><br>
+        <input type="submit" value="存为草稿">
+        <input type="submit" value="发布">
+
+      </div>
+      </div>
+      <div id="message-draft" class="partition message-box"><h2>草稿</h2>      <ul>
+              <li>2016.08.24 14:45<br>今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。</li>
+              <li>2016.08.24 14:45<br>今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。</li>
+            </ul>
+      </div>
+      <div id="private-message" class="partition">
+        <h2>消息列表</h2>
+        <ul>
+          <li>一年级 4班 2016.8.24 13:48<br>
+          上课内容如果有疑问的地方，，时间24晚8点-9点。-------小张
+          </li>
+          <li>一年级 4班 2016.8.24 13:48<br>
+          今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。-------小李
+          </li>
+          <li>一年级 4班  2016.8.24 13:48<br>
+          今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。-------小王
+          </li>
+        </ul>
+      </div>
+      <div id="private-create" class="partition">
+        <h2>发送新消息</h2>
+      <div class="new-message">
+        年级：<select>
+          <option>一年级</option>
+          <option>二年级</option>
+        </select>
+        班级：<select>
+          <option>1班</option>
+          <option>2班</option>
+        </select><br>
+        收件人:<input type="text"><br>
+        内容：<textarea cols="40" rows="5"></textarea><br>
+        <input type="submit" value="发送">
+      </div>
+      </div>
+      <div id="message-trash" class="partition message-box">
+        <h2>垃圾箱</h2>      <ul>
+              <li>2016.08.24 14:45<br>今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。</li>
+              <li>2016.08.24 14:45<br>今天的上课内容如果有疑问的地方，可以私信我，时间24晚8点-9点。</li>
+            </ul>
+      </div>
+    <div id="footer">
+      <h3>Powered By Xidian-Java 16</h3>
+    </div>
+    <script>
+      window.onload = function () {
+        this.location.href = "#school-brief";
+      }
+    </script>
+</body>
+</html>

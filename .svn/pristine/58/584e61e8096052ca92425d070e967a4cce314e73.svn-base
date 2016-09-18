@@ -1,0 +1,11 @@
+package com.hfsc.dao;
+
+import java.util.List;
+
+import com.hfsc.model.Attendance;
+
+public interface AttendanceDao {
+
+	List<Attendance> queryAttendance(int attendanceID);
+
+}

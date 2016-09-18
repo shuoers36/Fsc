@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>login</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/register-login.css">
+  <style>
+    select, span{
+      margin: 0 ;
+      padding: 0;
+    }
+    select {
+      height: 20px;
+      width: 56%;
+      border: none;
+      background: transparent;
+      margin-bottom: 18px;
+      margin-left:3px;
+      font-size: .8em;
+    }
+    .user-type {
+      margin-left: 2em;
+      border: 1px solid #aaa;
+      height: 40px;
+      border-radius:  5px;
+      background: #eee;
+      padding-bottom: .35em;
+    }
+    #register-instruction {
+      margin-top: 3em;
+      font-size: .8em;
+    }
+  </style>
+</head>
+<body>
+    <div id="main">
+        <img src="images/user.png" id="user-head">
+        <div id="container">
+          <h3>用户登录</h3><a href="register.html" class="login">注册</a><hr>
+            <form class="register-form" method="post" action="index.html">
+              选择用户类型:
+              <span class="user-type"><select >
+                <option value="学生">学生</option>
+                <option value="教师">教师</option>
+                <option value="领导">领导</option>
+                <option value="管理员">管理员</option>
+              </select></span><br>
+              <label for="username">用户名：</label><input type="text" id="username"><br>
+              <label for="password">输入密码：</label><input type="password" id="password"><br>
+              <label for="password">确认密码：</label><input type="password" id="password"><br>
+              <input type="reset" id="reset" value="重置"><input type="submit" id="submit" value="提交">
+            </form>
+          <p id="register-instruction">关于登录，若您是领导、教师或学生且已有分配账号，请直接以此账号登录，若尚未知账号，请与管理员联系。家长请先注册再登录。</p>
+        </div>
+    </div>
+</body>
+</html>

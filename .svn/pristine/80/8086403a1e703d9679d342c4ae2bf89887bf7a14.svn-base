@@ -1,0 +1,23 @@
+<%@ page contentType="text/html; charset=utf-8" language="java" %>
+  <div id="nav">
+      <h2>Xidian-16 </h2>
+      <h3>管理员</h3>
+      <a  href=""  id="logout">注销</a>
+  </div>
+  <form method="POST" action="logout.do" >
+  <input type="submit" value="注销">
+  
+  
+  </form>
+  ${sessionScope.sessiontest.role_name}
+  ${sessionScope.sessiontest.resource}
+  ${sessionScope.sessiontest.class_id}
+  ${sessionScope.sessiontest.subject_name}
+  
+  <script>
+  		var logout = document.getElementById("logout");	
+  		logout.onclick = function (e) {
+  			e.preventDefault();
+  			$.post("logout.do"); 
+  		}
+  </script>

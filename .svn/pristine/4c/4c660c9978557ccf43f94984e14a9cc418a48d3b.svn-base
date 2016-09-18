@@ -1,0 +1,32 @@
+package com.hfsc.service;
+
+import java.util.List;
+
+import com.hfsc.model.User;
+import com.hfsc.model.Page;
+
+public interface UserService {
+    
+   
+    public void insertUser(User user);
+    
+    public void updateUser(User user);
+    
+   
+    public void deleteUser(Long id);
+    
+   
+    public List<User> queryUser(User user,Page page);
+    
+    
+    public User queryUserByUserId(Long id);
+    
+    public User queryUserByName(String name);
+
+	List<User> queryRole(User user);
+
+	List<User> queryResource(String role_name);
+    
+    /*public Long getNowId(User user);*/
+    
+}

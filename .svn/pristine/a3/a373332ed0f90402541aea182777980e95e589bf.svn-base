@@ -1,0 +1,437 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost_3306
+Source Server Version : 50142
+Source Host           : localhost:3306
+Source Database       : fsc
+
+Target Server Type    : MYSQL
+Target Server Version : 50142
+File Encoding         : 65001
+
+Date: 2016-09-07 09:01:27
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `activity`
+-- ----------------------------
+DROP TABLE IF EXISTS `activity`;
+CREATE TABLE `activity` (
+  `Activity_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Class_id` int(11) DEFAULT NULL,
+  `Activity_time` varchar(1024) DEFAULT NULL,
+  `Activity_name` varchar(1024) DEFAULT NULL,
+  `Activity_content` varchar(1024) DEFAULT NULL,
+  `Photo_path` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Activity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=703 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of activity
+-- ----------------------------
+INSERT INTO `activity` VALUES ('701', '3', '2016-09-07 01:42:09', '校园招聘', '今天是校招的日子', 'http://localhost:8080/fsc/upload/4f3edae0-53e4-41db-80d5-5a789db42d37.jpg');
+INSERT INTO `activity` VALUES ('702', '1313', '2016-09-07 01:45:01', '新活动', '今天是大家补考的日子。', 'http://localhost:8080/fsc/upload/2807dcf8-21cd-4edb-83b5-a76086fb9799.jpg');
+
+-- ----------------------------
+-- Table structure for `announcement`
+-- ----------------------------
+DROP TABLE IF EXISTS `announcement`;
+CREATE TABLE `announcement` (
+  `Announcement_id` int(11) NOT NULL AUTO_INCREMENT,
+  `User_id` int(11) DEFAULT NULL,
+  `Announcement_title` varchar(1024) DEFAULT NULL,
+  `Announcement_content` varchar(1024) DEFAULT NULL,
+  `Announcement_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`Announcement_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of announcement
+-- ----------------------------
+INSERT INTO `announcement` VALUES ('2', '2333', '今天放假', '今天放假', '2016-09-07 08:33:26');
+
+-- ----------------------------
+-- Table structure for `attendance`
+-- ----------------------------
+DROP TABLE IF EXISTS `attendance`;
+CREATE TABLE `attendance` (
+  `Attendance_id` int(11) NOT NULL DEFAULT '0',
+  `Student_name` varchar(1024) DEFAULT NULL,
+  `Attendance_content` varchar(1024) DEFAULT NULL,
+  `Attendance_time` datetime DEFAULT NULL,
+  `Student_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Attendance_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of attendance
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `class`
+-- ----------------------------
+DROP TABLE IF EXISTS `class`;
+CREATE TABLE `class` (
+  `Class_id` int(11) NOT NULL,
+  `Class_num` varchar(1024) DEFAULT NULL,
+  `Class_location` varchar(1024) DEFAULT NULL,
+  `Grade` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of class
+-- ----------------------------
+INSERT INTO `class` VALUES ('1313', '1', null, '1');
+INSERT INTO `class` VALUES ('1314', '2', null, '2');
+
+-- ----------------------------
+-- Table structure for `comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `Comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Teacher_name` varchar(1024) DEFAULT NULL,
+  `Student_id` int(11) DEFAULT NULL,
+  `Message_content` varchar(1024) DEFAULT NULL,
+  `Message_time` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Comment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
+INSERT INTO `comment` VALUES ('1', '赵老师', '2', '让我认为', '2016-09-07 02:02:33');
+INSERT INTO `comment` VALUES ('2', '赵老师', '2', '23424', '2016-09-07 02:06:40');
+INSERT INTO `comment` VALUES ('3', '赵老师', '2', '1213123', '2016-09-07 02:07:52');
+
+-- ----------------------------
+-- Table structure for `hold`
+-- ----------------------------
+DROP TABLE IF EXISTS `hold`;
+CREATE TABLE `hold` (
+  `Class_id` int(11) NOT NULL,
+  `Activity_id` int(11) NOT NULL,
+  PRIMARY KEY (`Class_id`,`Activity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hold
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `homework`
+-- ----------------------------
+DROP TABLE IF EXISTS `homework`;
+CREATE TABLE `homework` (
+  `Homework_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Subject_name` varchar(1024) DEFAULT NULL,
+  `Class_id` int(11) DEFAULT NULL,
+  `Homework_content` varchar(1024) DEFAULT NULL,
+  `Homework_time` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Homework_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of homework
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `honor`
+-- ----------------------------
+DROP TABLE IF EXISTS `honor`;
+CREATE TABLE `honor` (
+  `Honor_id` int(11) NOT NULL,
+  `Student_name` varchar(1024) DEFAULT NULL,
+  `Honor_content` varchar(1024) DEFAULT NULL,
+  `Honor_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`Honor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of honor
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `leader`
+-- ----------------------------
+DROP TABLE IF EXISTS `leader`;
+CREATE TABLE `leader` (
+  `Leader_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Leader_name` varchar(1024) DEFAULT NULL,
+  `Leader_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Leader_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of leader
+-- ----------------------------
+INSERT INTO `leader` VALUES ('2', '王校长', '666');
+INSERT INTO `leader` VALUES ('3', '张校长', '12345');
+INSERT INTO `leader` VALUES ('4', '路主任', '888888');
+
+-- ----------------------------
+-- Table structure for `manager`
+-- ----------------------------
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE `manager` (
+  `Manager_id` int(11) NOT NULL,
+  `Manager_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Manager_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of manager
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `message`
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `Message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Addresser_name` varchar(1024) NOT NULL,
+  `Addressee_name` varchar(1024) NOT NULL,
+  `Message_title` varchar(1024) DEFAULT NULL,
+  `Message_content` varchar(1024) DEFAULT NULL,
+  `Message_time` varchar(1024) NOT NULL,
+  PRIMARY KEY (`Message_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('2', 'root', '赵老师', '关于明天放假问题的探讨结果', '关于明天放假的问题。关于明天放假的问题。', '2016-09-06 21:38:07');
+
+-- ----------------------------
+-- Table structure for `parent`
+-- ----------------------------
+DROP TABLE IF EXISTS `parent`;
+CREATE TABLE `parent` (
+  `Parent_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Student_id` int(11) DEFAULT NULL,
+  `Parent_name` varchar(1024) DEFAULT NULL,
+  `Parent_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Parent_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of parent
+-- ----------------------------
+INSERT INTO `parent` VALUES ('1', '2', '石家长', '123');
+
+-- ----------------------------
+-- Table structure for `resource`
+-- ----------------------------
+DROP TABLE IF EXISTS `resource`;
+CREATE TABLE `resource` (
+  `Resource_id` int(11) NOT NULL,
+  `Resource_name` varchar(1024) DEFAULT NULL,
+  `Parents` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Resource_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of resource
+-- ----------------------------
+INSERT INTO `resource` VALUES ('1', '1', null);
+INSERT INTO `resource` VALUES ('2', '2', null);
+INSERT INTO `resource` VALUES ('3', '3', null);
+INSERT INTO `resource` VALUES ('4', '4', null);
+INSERT INTO `resource` VALUES ('5', '5', '1');
+INSERT INTO `resource` VALUES ('6', '1.s', '1');
+INSERT INTO `resource` VALUES ('7', '1.g', '1');
+INSERT INTO `resource` VALUES ('8', '1.c', '1');
+
+-- ----------------------------
+-- Table structure for `resource_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `resource_role`;
+CREATE TABLE `resource_role` (
+  `Resource_Role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Role_id` int(11) DEFAULT NULL,
+  `Resource_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Resource_Role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of resource_role
+-- ----------------------------
+INSERT INTO `resource_role` VALUES ('1', '1', '1');
+INSERT INTO `resource_role` VALUES ('2', '1', '2');
+INSERT INTO `resource_role` VALUES ('3', '1', '3');
+INSERT INTO `resource_role` VALUES ('4', '1', '4');
+INSERT INTO `resource_role` VALUES ('6', '5', '5');
+INSERT INTO `resource_role` VALUES ('7', '3', '4');
+INSERT INTO `resource_role` VALUES ('8', '4', '1');
+INSERT INTO `resource_role` VALUES ('9', '4', '2');
+INSERT INTO `resource_role` VALUES ('10', '4', '3');
+INSERT INTO `resource_role` VALUES ('11', '4', '4');
+
+-- ----------------------------
+-- Table structure for `role`
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `Role_id` int(11) NOT NULL,
+  `Role_name` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('1', 'teacher');
+INSERT INTO `role` VALUES ('2', 'student');
+INSERT INTO `role` VALUES ('3', 'parent');
+INSERT INTO `role` VALUES ('4', 'manage');
+INSERT INTO `role` VALUES ('5', 'leader');
+
+-- ----------------------------
+-- Table structure for `score`
+-- ----------------------------
+DROP TABLE IF EXISTS `score`;
+CREATE TABLE `score` (
+  `Score_id` int(11) NOT NULL,
+  `Student_id` int(11) DEFAULT NULL,
+  `Subject_name` varchar(1024) DEFAULT NULL,
+  `Score` float DEFAULT NULL,
+  `Score_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`Score_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of score
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `student`
+-- ----------------------------
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student` (
+  `Student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Parent_id` int(11) DEFAULT NULL,
+  `Class_id` int(11) DEFAULT NULL,
+  `Student_sex` varchar(1024) DEFAULT NULL,
+  `Student_name` varchar(1024) DEFAULT NULL,
+  `Student_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of student
+-- ----------------------------
+INSERT INTO `student` VALUES ('1', null, '1313', null, '李同学', 'fsfssdf');
+INSERT INTO `student` VALUES ('2', null, '1313', null, '石同学', 'asdbasj');
+
+-- ----------------------------
+-- Table structure for `subject`
+-- ----------------------------
+DROP TABLE IF EXISTS `subject`;
+CREATE TABLE `subject` (
+  `Subject_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Teacher_id` int(11) DEFAULT NULL,
+  `Subject_name` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Subject_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of subject
+-- ----------------------------
+INSERT INTO `subject` VALUES ('2', '2', '语文');
+INSERT INTO `subject` VALUES ('3', '3', '语文');
+INSERT INTO `subject` VALUES ('4', '4', '语文');
+INSERT INTO `subject` VALUES ('5', '5', '数学');
+INSERT INTO `subject` VALUES ('6', '6', '语文');
+
+-- ----------------------------
+-- Table structure for `teach`
+-- ----------------------------
+DROP TABLE IF EXISTS `teach`;
+CREATE TABLE `teach` (
+  `Teacher_id` int(11) NOT NULL,
+  `Class_id` int(11) NOT NULL,
+  `Teach_content` varchar(1024) DEFAULT NULL,
+  `Teach_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`Teacher_id`,`Class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teach
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `teacher`
+-- ----------------------------
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE `teacher` (
+  `Teacher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Class_id` int(11) DEFAULT NULL,
+  `Teacher_name` varchar(1024) DEFAULT NULL,
+  `Teacher_phone` int(11) DEFAULT NULL,
+  `Teacher_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`Teacher_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of teacher
+-- ----------------------------
+INSERT INTO `teacher` VALUES ('3', '1313', '赵老师', null, '123');
+INSERT INTO `teacher` VALUES ('4', '1313', '孙老师', null, 'wrwerw');
+INSERT INTO `teacher` VALUES ('5', '1313', '汪老师', null, '111');
+INSERT INTO `teacher` VALUES ('6', '1', '秦老师', null, '31212312');
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `User_id` int(11) NOT NULL AUTO_INCREMENT,
+  `User_name` varchar(1024) DEFAULT NULL,
+  `User_password` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`User_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('315', 'root', '123');
+INSERT INTO `user` VALUES ('335', '王校长', '666');
+INSERT INTO `user` VALUES ('336', '张校长', '12345');
+INSERT INTO `user` VALUES ('337', '路主任', '888888');
+INSERT INTO `user` VALUES ('338', '李同学', 'fsfssdf');
+INSERT INTO `user` VALUES ('340', '石同学', 'asdbasj');
+INSERT INTO `user` VALUES ('341', '赵老师', '123');
+INSERT INTO `user` VALUES ('342', '孙老师', 'wrwerw');
+INSERT INTO `user` VALUES ('379', '汪老师', '111');
+INSERT INTO `user` VALUES ('380', '秦老师', '31212312');
+INSERT INTO `user` VALUES ('382', '石家长', '123');
+
+-- ----------------------------
+-- Table structure for `user_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role` (
+  `User_Role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `User_id` int(11) DEFAULT NULL,
+  `Role_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`User_Role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_role
+-- ----------------------------
+INSERT INTO `user_role` VALUES ('3', '315', '4');
+INSERT INTO `user_role` VALUES ('10', '335', '5');
+INSERT INTO `user_role` VALUES ('11', '336', '5');
+INSERT INTO `user_role` VALUES ('12', '337', '5');
+INSERT INTO `user_role` VALUES ('13', '338', '2');
+INSERT INTO `user_role` VALUES ('14', '340', '2');
+INSERT INTO `user_role` VALUES ('16', '341', '1');
+INSERT INTO `user_role` VALUES ('17', '342', '1');
+INSERT INTO `user_role` VALUES ('21', '379', '1');
+INSERT INTO `user_role` VALUES ('22', '380', '1');
+INSERT INTO `user_role` VALUES ('24', '382', '3');

@@ -1,0 +1,99 @@
+body,div,form,input,h3,p,textarea{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0 auto;
+      font-size: .625em;
+      background: url(../images/bg2.jpg) center center;  
+    }
+    #main {
+      position: relative;
+    }
+    #user-head {
+      position: absolute;
+      left: 48%;
+      z-index: 100;
+    }
+    #container {
+      position: absolute;
+      height: 500px;
+      width: 400px;
+      left: 50%;
+      top: 50%;
+      margin-left: -200px;
+      margin-top: 50px;
+      border: 10px solid rgba(240,240,240,.8);
+      border-radius: 15px;
+      font-size: 1.8em;
+      padding: 1em;
+      background: #fff;
+      box-shadow: 2px 2px 8px #333;
+    }
+    #container h3 {
+        width: 4em;
+        color: #333;
+        text-align: center;
+        padding: .3em 1em;
+        font-weight: bold;
+        display: inline-block;
+    }
+    #container .login {
+      text-decoration: none;
+      margin-left: 10em;
+      color: #aaa;
+    }
+    .register-form {
+      padding: 1em;
+      line-height: 2.2em;
+    }
+    .register-form input {
+      float: right;
+      width: 16em;
+      height: 2.2em;
+      border: none;
+      border-radius: 7px;
+      background: rgba(200,200,200,.5);
+    }
+
+    .register-form input:focus {
+      background: rgba(240,240,240,.6);
+
+    }
+    .register-form textarea {
+      vertical-align: middle;
+      margin-top: 1em;
+      border: none;
+      border-radius: 5px;
+      background: rgba(200,200,200,.8);
+      resize: none;
+      width: 60%;
+      height: 3em;
+      overflow: hidden;
+      margin-left: 15%;
+    }
+    #submit, #reset {
+      width: 5em;     
+      margin-top:.8em;
+      padding: .4em .8em;
+      font-size: .8em;
+      box-shadow: 1px 1px 3px #555;
+      outline: none;
+    }
+    #submit:hover, #reset:hover {
+      box-shadow: 2px 2px 5px #555;
+    }
+    #submit {
+      margin-right: 4em;
+    }
+    #reset {
+      margin-right: .6em;
+    }
+    #register-instruction {
+      margin-top: 2.3em;
+      font-size: .7em;
+      color: #bb0;
+      padding: 2em;
+      line-height: 1.4em;
+    }
+    

@@ -1,0 +1,90 @@
+package com.hfsc.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hfsc.dao.HomeworkDao;
+import com.hfsc.model.Homework;
+import com.hfsc.model.User;
+import com.hfsc.service.HomeworkService;
+import com.hfsc.until.DBUntil;
+
+public class HomeworkDaoImpl implements HomeworkDao {
+
+	@Override
+	public void insertHomework(Homework homework) {
+
+		List<Object> param = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		sql.append(" insert into homework (homework_id,subject_id,homework_content) values (?,?,?) ");
+		DBUntil db = new DBUntil();
+		param.add(homework.getHomework_id());
+		param.add(homework.getSubject_id());
+		param.add(homework.getHomework_content());
+		db.insertUpdateDeleteExute(sql.toString(), param);
+
+	}
+	
+    @Override
+    public void changeHomework(Homework homework) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" update homework set homework_content = ? where homework_id = ? ");
+        DBUntil db = new DBUntil();
+        param.add(homework.getHomework_content());
+        param.add(homework.getHomework_id());
+        db.insertUpdateDeleteExute(sql.toString(), param);
+        
+    }
+    
+    @Override
+    public void deleteHomework(int id) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" delete from homework where homework_id = ? ");
+        DBUntil db = new DBUntil();
+        param.add(id);
+        db.insertUpdateDeleteExute(sql.toString(), param);
+        
+    }
+    @Override
+    public List<Homework> queryHomework(int homeworkID) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" select * from homework where 1=1 ");
+  
+        if (homeworkID != -1) {
+            sql.append("and homework_id = ");
+            sql.append(homeworkID);
+
+        }
+      
+        DBUntil db = new DBUntil();
+        try {
+
+            List<Homework> list = db.quseryInfo(sql.toString(), param, Homework.class);
+            
+            System.out.println(list.get(0));
+            return list;
+        }
+        catch (InstantiationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (NoSuchFieldException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+}

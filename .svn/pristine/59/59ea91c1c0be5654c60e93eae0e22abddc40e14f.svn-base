@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+     
+    <!--  
+	<mvc:annotation-driven/>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+ -->
+	<!-- 配置handlerMapping -->
+	<bean
+		class="org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping"></bean>
+
+	<!-- 启动JSON格式的配置 -->
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<!--解决 HttpMediaTypeNotAcceptableException: Could not find acceptable representation -->
+
+		<property name="supportedMediaTypes">
+
+			<list>
+
+				<value>text/html;charset=UTF-8</value>
+
+			</list>
+
+		</property>
+
+	</bean>
+
+
+
+	<!-- 配置controller -->
+	<bean name="/class.do" class="com.hfsc.controller.ClassController"></bean>
+	<bean name="/addActivity.do" class="com.hfsc.controller.AddActivityController"></bean>
+	<bean name="/upload.do" class="com.hfsc.controller.UploadController"></bean>
+	<bean name="/message.do" class="com.hfsc.controller.MessageController"></bean>
+	<bean name="/scoreByTeacher.do" class="com.hfsc.controller.ScoreController"></bean>
+	<bean name="/score.do" class="com.hfsc.controller.ScoreController"></bean>
+	<bean name="/attendance.do" class="com.hfsc.controller.AttendanceController"></bean>
+	<bean name="/activity.do" class="com.hfsc.controller.ActivityController"></bean>
+	<bean name="/homework.do" class="com.hfsc.controller.HomeworkController"></bean>
+	<bean name="/login.do" class="com.hfsc.controller.LoginController"></bean>
+	<bean name="/register.do" class="com.hfsc.controller.RegisterController"></bean>
+	<bean name="/usermanage.do" class="com.hfsc.controller.UserManageController"></bean>
+	<bean name="/announcement.do" class="com.hfsc.controller.AnnouncementController"></bean>
+	<bean name="/announcementDetail.do" class="com.hfsc.controller.AnnouncementDetailController"></bean>
+	<bean name="/Comment.do" class="com.hfsc.controller.CommentController"></bean>
+	<bean name="/honor.do" class="com.hfsc.controller.HonorController"></bean>
+	<!-- 配置视图解析器 -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置前缀和后缀 -->
+		<property name="prefix" value="/"></property>
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 配置文件上传解析器 -->
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<!-- 设置上传文件的最大尺寸为1MB -->
+			<property name="maxUploadSize">
+				<value>1048576</value>
+			</property>
+		</bean>
+
+
+
+
+</beans>
+	

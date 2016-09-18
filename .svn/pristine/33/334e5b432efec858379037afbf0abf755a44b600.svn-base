@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="activity.do" method="post">
+	活动ID<input type="text" name="activity_id"></br>
+	活动名称<input type="text" name="activity_name"></br>
+	活动内容<input type="text" name="activity_content"></br>
+	<input type="submit" value="提交"></br>
+	活动ID<input type="text" name="activity_cgid"></br>
+	修改内容<input type="text" name="activity_change"></br>
+	<input type="submit" value="修改"></br>
+	活动ID<input type="text" name="activity_delid"></br>
+	<input type="submit" value="删除"></br>
+	活动ID<input type="text" name="activity_query"></br>
+	<input type="submit" value="查询"></br>
+	</form>
+	<table>
+        <caption>用户列表</caption>
+        <thead>
+            <tr>
+                <th>活动ID</th>
+                <th>活动名称</th>
+                <th>活动内容</th>
+                <th>活动时间</th></tr>
+        </thead>
+        <tbody id="lis">
+            <c:forEach items="${activity2 }" var="node">  
+      <tr>
+        <td><c:out value="${node.activity_id }"></c:out></td>
+        <td><c:out value="${node.activity_name}"></c:out></td>
+        <td><c:out value="${node.activity_content}"></c:out></td>
+        <td><c:out value="${node.activity_time}"></c:out></td>
+
+      </tr>
+   </c:forEach>  
+        </tbody>
+    </table>
+</body>
+</html>

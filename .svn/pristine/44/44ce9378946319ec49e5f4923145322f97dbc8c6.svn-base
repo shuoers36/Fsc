@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<title>今日作业</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="scripts/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="scripts/bootstrap.min.js"></script>
+  <style>
+      #content-list {
+        font-size: 2em;
+      }
+  </style>
+</head>
+<body>
+  <div id="container">
+      <%@ include  file="header.jsp"%>
+  </div>
+ <div id="left-list">
+      <jsp:include  page="menu.jsp"/>
+ </div>
+ <div id="content-list">
+	<form action="homework.do" method="post">
+	作业ID<input type="text" name="homework_id"><br>
+	科目ID<input type="text" name="subject_id"><br>
+	作业内容<input type="text" name="homework_content"><br>
+	<input type="submit" value="提交"><br>
+	作业ID<input type="text" name="homework_cgid"><br>
+	修改作业<input type="text" name="homework_change"><br>
+	<input type="submit" value="修改"><br>
+	作业ID<input type="text" name="homework_delid"><br>
+	<input type="submit" value="删除"><br>
+	作业ID<input type="text" name="homework_query"><br>
+	<input type="submit" value="查询"><br>
+	</form>
+       <table>
+        <caption>用户列表</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>subID</th>
+                <th>内容</th></tr>
+        </thead>
+        <tbody id="lis">
+            <c:forEach items="${homework2}" var="node">  
+      <tr>
+        <td><c:out value="${node.homework_id}"></c:out></td>
+        <td><c:out value="${node.subject_id}"></c:out></td>
+        <td><c:out value="${node.homework_content}"></c:out></td>
+      	<td><c:out value="${node.homework_time}"></c:out></td>
+      </tr>
+   </c:forEach>  
+        </tbody>
+    </table>
+</div>
+<script>
+   
+    //dom加载过程中动态计算背景高度
+    $(document).ready (function (){
+        var height = $("#content-list").offset().top;
+        $("#content-list").height($(document).height()-height-10);
+        $("#left-list").height($(document).height()-height-10);
+        var page = (window.location.href.split("&"))[1].substr(5);
+        $(".pagination").children().eq(page).addClass("active");
+      });
+</script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>student</title>
+  <meta charset="UTF-8">
+  <style>
+    h1,h2,a,ul,li,a,p{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 900px;
+      min-width: 900px;
+      margin: 0 auto;
+      background: url(images/bg2.jpg) center center;
+      font-size: .625em;
+    }
+    #nav h1 {
+      font-size: 2em;
+      color: #888;
+      display: inline-block;
+      padding-left: 3em;
+    }
+    #nav h2 {
+      float: right;
+      padding-right: 1em;
+      font-size: 1.8em;
+      color: #aaa;
+    }
+    #nav a {
+      float: right;
+      padding-right: 2em;
+      font-size: 1.6em;
+      text-decoration: none;
+      color: #000;
+    }
+    #container {
+      margin-top: 50px;
+      position: relative;
+    }
+    #function-list {
+      list-style: none;
+      font-size: 1.5em;
+      float: left;
+      width: 150px;
+      height: 510px;
+      text-align: center;
+      background: rgba(240,240,240,.4);
+      margin-top: -21px;
+      padding-top: 20px;
+      border-radius: 10px 0 0 10px;
+    }
+    #function-list li {
+      padding: .3em;
+      background: rgba(240,240,240,.3);
+      width: 5em;
+      line-height: 1.8em;
+      margin-bottom: 20px;
+      margin-left: 50px;
+      border-radius: 4px;
+      letter-spacing: .1em;
+      box-shadow: 1px 1px 2px #333;
+    }
+    #function-list li a {
+      text-decoration: none;
+      color: #333;
+    }
+    .partition {
+        position: absolute;
+        top: 0%;
+        left: 16%;
+        width: 700px;
+        height: 500px;
+        display: none;
+    }
+    #list-content {
+      float: left;
+      margin-top: -20px;
+      margin-left:-8px;
+      border-radius: 10px;
+      height: 527px;
+      width: 700px;
+      background: rgba(240,240,240,.6);
+    }
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 49%;
+      color: #aaa;
+    }
+    #school-brief:target,#school-notice:target,#school-organization:target,#school-idadmin:target,#school-homework:target,#school-activity:target,#school-grade:target,#school-repu:target,#school-comments:target,#private-message:target {
+      display: block;
+    }
+    #school-brief h2 {
+      margin-left: 40px;
+    }
+    #school-brief img {
+      padding: 10px;
+      margin-top: 20px;
+    }
+    #school-brief p {
+      padding: 10px 60px;
+      font-size: 1.4em;
+      line-height: 1.7em;
+    }
+    #school-notice li {
+      position: relative;
+      list-style: none;
+      line-height: 5em;
+      padding-left: 3em;
+      border: 1px solid #aaa;
+      box-shadow: 2px 2px 3px #333;
+      margin: 5px 16px;
+      font-size: 1.2em;
+    }
+    #school-notice sup {
+      float: right;
+      margin-right: 10px;
+    } 
+    #school-homework {
+    }
+    #school-homework h3 {
+      text-align: center;
+      font-size: 2em;
+    }
+    #school-homework dl:before {
+      content: "·";
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-right: .5em;
+      margin-left: 1em;
+    }
+    #school-homework li {
+      list-style: none;
+      line-height: 3em;
+      padding-left: 30px;
+      font-size: 1.5em;
+    }
+    #school-activity li {
+      list-style: none;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+      width: 200px;
+      text-align: center;
+    }
+    #school-grade h3 {
+      text-align: center;
+      font-size: 1.5em;
+    }
+    #school-grade h2 {
+      float: left;
+      margin-left: 160px;
+    }
+    #school-grade table {
+      text-align: center;
+      margin: 50px auto;
+    }
+    #school-repu h2 {
+      display: inline-block;
+      padding-left: 200px;
+      color: #555;
+    }
+    #school-repu ul {
+      list-style: none; 
+      font-size: 2em;
+    }
+    #school-repu ul span {
+      color: #888;
+      padding-right: 3em;
+      font-size: .8em;
+    }
+    #school-repu #re {
+      padding: 60px;
+      float: left;
+    }
+    #school-repu #pu {
+      float: left;
+      padding: 50px;
+    }
+    #school-comments ul {
+      list-style: none;
+      font-size: 1.5em;
+      padding-left: 2em;
+    }
+    #school-comments li:before {
+      content: "·";
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 2.5em;    
+    }
+    #school-comments span {
+      display: block;
+      float: right;
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+    #private-message  {
+      font-size: 1.3em;
+    } 
+    #private-message li {
+      border: 1px solid #bbb;
+      list-style: none;
+      padding-left: 30px;
+    }
+    #private-message span {
+      float: right;
+      margin-right: 20px;
+    }
+    #private-message h2 {
+      text-align: center;
+      margin-top: 60px;
+      text-shadow: 2px 2px 7px #777;
+    }
+    #private-message a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+    <div id="nav">
+      <h1>Hwadee-FSC</h1>
+      <a href="#">注销</a>
+      <h2>张三</h2>
+    </div>
+    <div id="container">
+      <ul id="function-list">
+        <li><a href="#school-brief">学校简介</a></li>
+        <li><a href="#school-notice">公告信息</a></li>
+        <li><a href="#school-homework">课后作业</a></li>
+        <li><a href="#school-activity">查看活动</a></li>
+        <li><a href="#school-grade">成绩查询</a></li>
+        <li><a href="#school-repu">查看奖惩</a></li>
+        <li><a href="#school-comments">查看评语</a></li>
+        <li><a href="#private-message">留言交流</a></li>
+      </ul>
+      <div id="list-content">
+        
+      </div>
+      <div id="school-brief" class="partition">
+        <h2>西安电子科技大学</h2>
+        <p>
+          西安电子科技大学是以信息与电子学科为主，工、理、管、文多学科协调发展的全国重点大学，直属教育部，是国家“985优势学科创新平台”项目和“211工程”项目重点建设高校之一，是全国56所设有研究生院的高校之一，37所示范性软件学院的高校之一，也是全国20所获批设立集成电路人才培养基地的高校之一。</p>
+          <p>学校前身是1931年诞生于江西瑞金的中央军委无线电学校，是毛泽东等老一辈革命家亲手创建的第一所工程技术学校。1958年学校迁址西安，1966年转为地方建制，1988年定为现名。
+        </p>
+        <hr>
+        <img src="images/school1.jpg" width="200px">
+        <img src="images/school2.jpg" width="200px">
+        <img src="images/school3.jpg" width="200px">
+      </div>
+      <div id="school-notice" class="partition">
+        <ul>
+          <li><h2>消息公告1</h2>
+            <p>今天不上课，请大家好好休息，保证身体健康。<sup>2016.08.13</sup></p>
+          </li>
+          <li><h2>消息公告2</h2></li>
+          <li><h2>消息公告3</h2></li>
+        </ul>
+      </div>
+      <div id="school-homework" class="partition">
+        <h3>班级作业 &nbsp;&nbsp;2016年8月2日</h3>
+        <ul>
+          <li><dl>002 操作系统</dl><dd>
+            今天的操作系统作业是课本100页 1-20
+          </dd></li>
+          <li><dl>004 编译原理</dl><dd>
+            今天的编译原理作业是课本100页 1-20
+          </dd></li>
+         <li><dl>005 算法</dl><dd>
+            今天的算法作业是课本100页 1-20
+          </dd></li>
+        </ul>
+      </div>
+      <div id="school-activity" class="partition">
+        <ul>
+          <li><img src=" " width="200px" height="100px">互联网+大赛</li>
+          <li><img src=" " width="200px" height="100px">软件开发大赛</li>
+          <li><img src=" " width="200px" height="100px">移动应用开发大赛</li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+          <li><img src=" " width="200px" height="100px"></li>
+        </ul>
+      </div>
+      <div id="school-grade" class="partition">
+        <h3>本学期成绩</h3>
+        <table border="1px" width="600px" height="300px" cellspacing="0">
+          <tr>
+            <td>数据库应用</td><td>90</td><td>操作系统</td><td>87</td>
+          </tr>
+          <tr>
+            <td>计算机组成</td><td>85</td><td>编译原理</td><td>83</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+          <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td>
+          </tr>
+        </table>
+        <h2><a href="">查询所有成绩</a></h2>
+        <h2><a href="">显示不及格成绩</a></h2>
+      </div>
+      <div id="school-repu" class="partition">
+        <h2>奖励情况</h2><h2>受罚情况</h2>
+        <ul id="re">
+          <li><span>006</span>2016年1月 校级优秀学生</li>
+          <li><span>002</span>2016年1月 国家级特等奖</li>
+          <li><span>010</span>2016年1月 校级ACM竞赛二等奖</li>
+        </ul>
+        <ul id="pu">
+            <li>暂无</li>
+        </ul>
+      </div>
+      <div id="school-comments" class="partition">
+        <ul>
+          <li>
+            该同志人生目的明确，信念坚定执着，工作敬业积极，学习认真踏实，生活简约充实，为人豁达宽厚，情绪乐观平稳，虽然自身还有很多缺点和不足，但仍不愧是一个好同志。<span>-----张老师</span>
+          </li>
+          <li>
+            外表文静，内心热情，总是拥有一份好心情，总有笑容。你知道自己的优缺点，有稳定的目标，有自己努力的方向，认真的做好每一件事情，专业能力和综合素质都有显著进步。<span>-----王老师</span>
+          </li>
+          <li>
+            该同志人生目的明确，信念坚定执着，工作敬业积极，学习认真踏实，生活简约充实，为人豁达宽厚，情绪乐观平稳，虽然自身还有很多缺点和不足，但仍不愧是一个好同志。<span>-----李老师</span>
+          </li>
+          <li>
+            该同志人生目的明确，信念坚定执着，工作敬业积极，学习认真踏实，生活简约充实，为人豁达宽厚，情绪乐观平稳，虽然自身还有很多缺点和不足，但仍不愧是一个好同志。<span>-----赵老师</span>
+          </li>
+        </ul>
+      </div>
+      <div id="private-message" class="partition">
+        <ul>
+          <li>
+            <h3> 公告 来自 李老师</h3>
+            <p>今天的作业是·······，请大家认真完成。<span>删除</span></p>
+            
+          </li>
+          <li>
+            <h3> 私信 来自 张老师</h3>
+            <p>今天的作业怎么没交，明天到办公室找我。<span>回复</span><span>删除</span></p>
+            
+          </li>
+          <li>
+            <h3> 公告 来自 李老师</h3>
+            <p>今天的作业是·······，请大家认真完成。<span>删除</span></p>
+            
+          </li>
+          <li>
+            <h3> 私信 发给 张老师</h3>
+            <p>今天的作业没写完。<span>删除</span></p>
+            
+          </li>
+        </ul>
+        <h2><a href="#"><img src="images/add1.png" width="30px" height="30px">新建私信</a></h2>
+      </div>
+    <div id="footer">
+      <h3>Powered By Xidian-Java 16</h3>
+    </div>
+    <script>
+      window.onload = function () {
+        this.location.href = "#school-brief";
+      }
+    </script>
+</body>
+</html>

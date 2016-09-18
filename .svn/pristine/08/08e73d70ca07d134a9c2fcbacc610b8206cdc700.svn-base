@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>今日作业</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="scripts/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="scripts/bootstrap.min.js"></script>
+  <style>
+      #content-list {
+        font-size: 2em;
+      }
+      #wrapper {
+        width: 90%;
+        height: 500px;
+        margin: 15px auto;
+        background: #fff;
+        box-shadow: 1px 1px 3px #444;
+        border-radius: 6px;
+        overflow: auto;
+      }
+      .homework-list li {
+        display: inline-block;
+        width: 100%;
+        line-height: 6em;
+      }
+      .subject-name {
+        float: left;
+        font-size: 1.5em;
+        color: #81CFE0;
+        font-family: "STHeiti Light";
+        text-shadow: 1px 1px 0px #222;
+      }
+      .homework-time {
+        float: right;
+        margin-right: 35px;
+      }
+      .homework-content {
+        display: block;
+        margin-top: 3em;
+        margin-right: 35px;
+        font-size: 1.2em;
+        border-bottom: 1px groove #03C9A9;
+      }
+      
+  </style>
+</head>
+<body>
+  <div id="container">
+      <%@ include  file="header.jsp"%>
+  </div>
+ <div id="left-list">
+      <jsp:include  page="menu.jsp"/>
+ </div>
+ <div id="content-list">
+    <div id="wrapper">
+    <ul class="homework-list">
+      <c:forEach items="${homework1}" var="node"> 
+        <li>
+        <span class="subject-name"><c:out value="${node.subject_name}"></c:out></span>
+        <span class="homework-time"><c:out value="${node.homework_time}"></c:out></span>
+        <span class="homework-content"><c:out value="${node.homework_content}"></c:out></span>
+       </li> 
+      </c:forEach> 
+    </ul>     
+  </div>
+      
+</div>
+<script>
+   
+    //dom加载过程中动态计算背景高度
+    $(document).ready (function (){
+        var height = $("#content-list").offset().top;
+        $("#content-list").height($(document).height()-height-10);
+        $("#left-list").height($(document).height()-height-10);
+      });
+    window.onload = function () {     
+      $.post("homework.do?type=querystu&class_id=3", function (homework1){
+             $("body").html(homework1); 
+            }); 
+  };
+</script>
+</body>
+</html>

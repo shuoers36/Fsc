@@ -1,0 +1,87 @@
+package com.hfsc.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hfsc.dao.ActivityDao;
+import com.hfsc.model.Activity;
+import com.hfsc.until.DBUntil;
+
+public class ActivityDaoImpl implements ActivityDao{
+	
+	@Override
+	public void insertActivity(Activity activity) {
+
+		List<Object> param = new ArrayList<Object>();
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append(" insert into activity (Activity_id,Activity_name,Activity_content) values (?,?,?) ");
+		DBUntil db = new DBUntil();
+		param.add(activity.getActivity_id());
+		param.add(activity.getActivity_name());
+		param.add(activity.getActivity_content());
+		db.insertUpdateDeleteExute(sql.toString(), param);
+
+	}
+	
+    @Override
+    public void changeActivity(Activity activity) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" update activity set Activity_content = ? where Activity_id = ? ");
+        DBUntil db = new DBUntil();
+        param.add(activity.getActivity_content());
+        param.add(activity.getActivity_id());
+        db.insertUpdateDeleteExute(sql.toString(), param);
+        
+    }
+    
+    @Override
+    public void deleteActivity(int id) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" delete from activity where Activity_id = ? ");
+        DBUntil db = new DBUntil();
+        param.add(id);
+        db.insertUpdateDeleteExute(sql.toString(), param);
+        
+    }
+    @Override
+    public List<Activity> queryActivity(int ActivityID) {
+        List<Object> param = new ArrayList<Object>();
+        StringBuffer sql = new StringBuffer();
+        sql.append(" select * from activity where 1=1 ");
+  
+        if (ActivityID != -1) {
+            sql.append("and Activity_id = ");
+            sql.append(ActivityID);
+
+        }
+      
+        DBUntil db = new DBUntil();
+        try {
+
+            List<Activity> list = db.quseryInfo(sql.toString(), param, Activity.class);
+            return list;
+        }
+        catch (InstantiationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (NoSuchFieldException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
+}

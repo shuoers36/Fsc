@@ -1,0 +1,80 @@
+package com.hfsc.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.hfsc.model.Activity;
+import com.hfsc.service.ActivityService;
+import com.hfsc.service.impl.ActivityServiceImpl;
+
+@Controller
+@RequestMapping("activity.do")
+public class ActivityController extends AbstractController{
+
+
+	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String activity_id = request.getParameter("activity_id");
+		String activity_name = request.getParameter("activity_name");
+		String activity_content = request.getParameter("activity_content");
+		String activity_cgid = request.getParameter("activity_cgid");
+		String activity_change = request.getParameter("activity_change");
+		String activity_delid = request.getParameter("activity_delid");
+		String activity_query = request.getParameter("activity_query");
+		if (activity_id != "") {
+			Activity activity = new Activity();
+			activity.setActivity_id(Integer.parseInt(activity_id));
+			activity.setActivity_name(activity_name);
+			activity.setActivity_content(activity_content);
+		
+			ActivityService activityService = new ActivityServiceImpl();
+			activityService.insertActivity(activity);
+
+			ModelAndView mav = new ModelAndView(new RedirectView("activity.jsp"));
+			return mav;
+		}
+		if (activity_cgid != "") {
+			Activity activity = new Activity();
+			activity.setActivity_id(Integer.parseInt(activity_cgid));
+			activity.setActivity_content(activity_change);
+			ActivityService activityService = new ActivityServiceImpl();
+			activityService.changeActivity(activity);
+
+			ModelAndView mav = new ModelAndView(new RedirectView("activity.jsp"));
+			return mav;
+		}
+		if (activity_delid != "") {
+			Activity activity = new Activity();
+			activity.setActivity_id(Integer.parseInt(activity_delid));
+			ActivityService activityService = new ActivityServiceImpl();
+			activityService.deleteActivity(activity.getActivity_id());
+
+			ModelAndView mav = new ModelAndView(new RedirectView("activity.jsp"));
+			return mav;
+		}
+		if (activity_query != "") {
+			Activity activity = new Activity();
+			activity.setActivity_id(Integer.parseInt(activity_query));
+			ActivityService activityService = new ActivityServiceImpl();
+			
+
+			List<Activity> nlist1 = new ArrayList<Activity>();
+			nlist1 = activityService.queryActivity(activity.getActivity_id());
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("activity");
+			mav.addObject("activity1", nlist1); 
+			
+			return mav;
+		}
+		return null;
+	}
+}

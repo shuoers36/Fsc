@@ -1,0 +1,18 @@
+package com.hfsc.service.impl;
+
+import java.util.List;
+
+import com.hfsc.dao.ScoreDao;
+import com.hfsc.dao.impl.ScoreDaoImpl;
+import com.hfsc.model.Score;
+import com.hfsc.service.ScoreService;
+
+public class ScoreServiceImpl implements ScoreService {
+	
+	@Override
+    public List<Score> queryScore(int id) {
+		ScoreDao scoreDao = new ScoreDaoImpl();
+        return scoreDao.queryScore(id);
+        
+	}
+}
