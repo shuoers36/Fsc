@@ -1,3 +1,0 @@
-2016-8-27 9:05 	Role表添加Role_name 表项，非主键。          操作人：石东硕
-2016-8-27 9:30 	所有属性首字母改为大写，User，Role，Resource_Role，Resource修改错误命名          操作人：常慧
-2016-8-27 13:26 Activity表添加Activity_name列，非主键 ALTER TABLE activity ADD COLUMN Activity_name varchar(1024);		操作人：李鹏飞

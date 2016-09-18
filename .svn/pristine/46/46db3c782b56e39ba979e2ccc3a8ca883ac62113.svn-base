@@ -1,2 +1,0 @@
-2016-8-27 9:05 	Role表添加Role_name 表项，非主键。          操作人：石东硕
-2016-8-27 9:30 	所有属性首字母改为大写，User，Role，Resource_Role，Resource修改错误命名          操作人：常慧

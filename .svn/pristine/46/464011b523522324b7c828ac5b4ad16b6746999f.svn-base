@@ -1,7 +1,0 @@
-db.url= jdbc:MySQL:///fsc?useUnicode=true&characterEncoding=utf8
-
-db.username=root
-
-db.password=123
-
-db.dirverClass= com.mysql.jdbc.Driver
